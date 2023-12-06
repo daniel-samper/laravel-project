@@ -14,5 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    //return view('welcome');
+    echo"<h1>Hola Mundo</h1>";
+});
+
+Route::get('/mostrar-fecha',function(){
+    $titulo = "estoy mostrando la fecha";
+    return view('mostrar-fecha', array(
+        'titulo' => $titulo
+    ));
 });
