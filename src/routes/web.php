@@ -22,7 +22,8 @@ Route::get('/', function () {
 
 //Route::get('/peliculas/{pagina?}', [PeliculaController::class, 'Index']);
 Route::get('/peliculas/{pagina?}', [PeliculaController::class, 'Index'])->name('Index');
-Route::get('/detalle', [PeliculaController::class, 'detalle'])->name('detalle.pelicula');
+Route::get('/redirigir', [PeliculaController::class, 'redirigir'])->name('redirigir');
+Route::get('/detalle', [PeliculaController::class, 'detalle'])->name('detalle');
 
 
 Route::resource('usuario', 'App\Http\Controllers\UsuarioController');
