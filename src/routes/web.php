@@ -1,7 +1,8 @@
 <?php
-
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\PeliculaController;
+use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +20,12 @@ Route::get('/', function () {
     echo"<h1>Hola Mundo</h1>";
 });
 
-Route::get('/peliculas', 'App\Http\Controllers\PeliculaController@Index');
+//Route::get('/peliculas/{pagina?}', [PeliculaController::class, 'Index']);
+Route::get('/peliculas/{pagina?}', [PeliculaController::class, 'Index'])->name('Index');
+Route::get('/detalle', [PeliculaController::class, 'detalle'])->name('detalle.pelicula');
+
+
+Route::resource('usuario', 'App\Http\Controllers\UsuarioController');
 
 Route::get('/mostrar-fecha',function(){
     $titulo = "estoy mostrando la fecha";

@@ -6,11 +6,16 @@ use Illuminate\Http\Request;
 
 class PeliculaController extends Controller
 {
-    public function Index(){
-        $titulo = "listado de mis peliculas";
+    public function Index($pagina =1){
+        $titulo = "Index listado de mis peliculas";
 
         return view('pelicula.index', [
-            'titulo' => $titulo
+            'titulo' => $titulo,
+            'pagina' => $pagina
         ]);
+    }
+    
+    public function detalle() {
+        return view('pelicula.detalle');
     }
 }
