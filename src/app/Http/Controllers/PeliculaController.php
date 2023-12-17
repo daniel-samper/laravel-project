@@ -15,7 +15,7 @@ class PeliculaController extends Controller
         ]);
     }
     
-    public function detalle() {
+    public function detalle($year = null) {
         return view('pelicula.detalle');
     }
     

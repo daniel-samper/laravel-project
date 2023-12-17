@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\PeliculaController;
+use App\Http\Middleware;
 use Illuminate\Support\Facades\Route;
 
 
@@ -23,7 +24,7 @@ Route::get('/', function () {
 //Route::get('/peliculas/{pagina?}', [PeliculaController::class, 'Index']);
 Route::get('/peliculas/{pagina?}', [PeliculaController::class, 'Index'])->name('Index');
 Route::get('/redirigir', [PeliculaController::class, 'redirigir'])->name('redirigir');
-Route::get('/detalle', [PeliculaController::class, 'detalle'])->name('detalle');
+Route::get('/detalle/{year?}', [PeliculaController::class, 'detalle'])->name('detalle')->middleware('testyear');
 
 
 Route::resource('usuario', 'App\Http\Controllers\UsuarioController');
