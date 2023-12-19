@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\PeliculaController;
+use App\Http\Controllers\FrutaController;
 use App\Http\Middleware;
 use Illuminate\Support\Facades\Route;
 
@@ -21,10 +22,22 @@ Route::get('/', function () {
     echo"<h1>Hola Mundo</h1>";
 });
 
+
+Route::prefix('frutas')->group( function () {
+    Route::get('/index', [FrutaController::class, 'index']);
+    Route::get('/detail/{id}', [ FrutaController::class, 'detail' ])->name('frutas.detail');
+    Route::get('/crear', [ FrutaController::class, 'create' ])->name('frutas.create');
+    Route::post('/save', [ FrutaController::class, 'save' ])->name('frutas.save');
+});
+
+
 //Route::get('/peliculas/{pagina?}', [PeliculaController::class, 'Index']);
 Route::get('/peliculas/{pagina?}', [PeliculaController::class, 'Index'])->name('Index');
 Route::get('/redirigir', [PeliculaController::class, 'redirigir'])->name('redirigir');
 Route::get('/detalle/{year?}', [PeliculaController::class, 'detalle'])->name('detalle')->middleware('testyear');
+
+
+
 
 
 Route::resource('usuario', 'App\Http\Controllers\UsuarioController');
