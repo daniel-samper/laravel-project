@@ -24,10 +24,14 @@ Route::get('/', function () {
 
 
 Route::prefix('frutas')->group( function () {
-    Route::get('/index', [FrutaController::class, 'index']);
+    Route::get('/index', [FrutaController::class, 'index'])->name('frutas.index');
     Route::get('/detail/{id}', [ FrutaController::class, 'detail' ])->name('frutas.detail');
     Route::get('/crear', [ FrutaController::class, 'create' ])->name('frutas.create');
     Route::post('/save', [ FrutaController::class, 'save' ])->name('frutas.save');
+    Route::get('/delete/{id}', [ FrutaController::class, 'delete' ])->name('frutas.delete');
+    Route::get('/edit/{id}', [ FrutaController::class, 'edit' ])->name('frutas.edit');
+    Route::post('/update', [ FrutaController::class, 'update' ])->name('frutas.update');
+
 });
 
 
